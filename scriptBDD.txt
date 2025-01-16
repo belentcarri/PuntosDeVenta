@@ -1,0 +1,30 @@
+CREATE database java_challenge;
+
+USE java_challenge;
+
+CREATE TABLE puntos_de_venta (
+    id INT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL
+);
+
+
+CREATE TABLE acreditaciones (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    importe DOUBLE NOT NULL,
+    id_punto_venta INT NOT NULL,
+    fecha_recepcion DATE NOT NULL,
+    nombre_punto_venta VARCHAR(255) NOT NULL,
+    CONSTRAINT fk_punto_venta FOREIGN KEY (id_punto_venta) REFERENCES puntos_de_venta(id) ON DELETE CASCADE
+);
+
+INSERT INTO puntos_de_venta VALUES
+	(1, 'CABA'),
+    (2, 'GBA_1'),
+    (3, 'GBA_2'),
+    (4, 'Santa Fe'),
+    (5, 'Córdoba'),
+    (6, 'Misiones'),
+    (7, 'Salta'),
+    (8, 'Chubut'),
+    (9, 'Santa Cruz'),
+    (10, 'Catamarca');
